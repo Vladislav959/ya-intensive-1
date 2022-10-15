@@ -3,6 +3,7 @@
   --searchbar-padding: 2px;
   --input-padding-vertical: 11px;
   --transition-duration: 0.2s;
+  --max-width:700px;
 }
 * {
   box-sizing: border-box;
@@ -20,6 +21,10 @@ a {
   color: #0054b9;
   transition: color var(--transition-duration) ease-in-out;
 }
+a:visited{
+    /*color:#a58bdd;*/
+    /* отключено, так-как на всех ссылках стоит # */
+}
 a:hover {
   color: #c00;
 }
@@ -32,22 +37,18 @@ h6 {
   font-weight: normal;
 }
 .container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 800px;
-  --top: 30vh;
-  top: var(--top);
-  height: calc(100vh - var(--top));
-  justify-content: space-between;
-  display: flex;
-
-  flex-direction: column;
-  gap: 15px;
+  
 }
 main {
+    position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  max-width: var(--max-width);
+  justify-content: flex-start;
   display: flex;
+
   gap: 20px;
 }
 .main__logo {
@@ -63,6 +64,7 @@ main {
 }
 .main__right {
   display: flex;
+  flex-grow:1;
   flex-direction: column;
   gap: 20px;
 }
@@ -129,10 +131,11 @@ main {
   color: #999;
 }
 footer {
-  margin: auto;
   position: absolute;
   bottom: 30px;
-  left: 0;
+  left: calc((100% - 700px) / 2 + 97px + 20px);
+  max-width:calc(var(--max-width) - 97px - 20px);
+  width:100%;
 }
 .footer__links {
   display: flex;
