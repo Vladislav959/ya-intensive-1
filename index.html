@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yandex</title>
+    <link rel="stylesheet" href="./main.css" type="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <div class="main__logo">
+                <img src="./logo.svg" />
+            </div>
+            <div class="main__right">
+                <div class="right__searchbar">
+                    <input placeholder="Найдётся всё" type="text" class="searchbar__input" />
+                    <button class="searchbar__button">Найти</button>
+                </div>
+                <div class="right__text">
+                    <h2>Ошибка 404. Нет такой страницы.</h2>
+                    <p>Если вы считаете, что страницы нет по нашей вине, <a href="#">напишите нам</a>.</p>
+                </div>
+                <div class="right__services">
+
+                </div>
+
+        </main>
+        <footer>
+            <div class="footer__links">
+                <a href="#" class="link-gray">Компания</a>
+                <a href="#" class="link-gray">About</a>
+                <a href="#" class="link-gray">© Яндекс</a>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        window.onload = () => {
+            const services = [
+
+                {
+                    icon_name: 'market_new2022',
+                    name: 'Маркет',
+                    description: 'смартфоны Huawei'
+                }, {
+                    icon_name: 'plus1',
+                    name: 'Плюс',
+                    description: 'теперь и для семьи'
+                },
+                {
+                    icon_name: 'music_new',
+                    name: 'Музыка',
+                    description: 'подкасты где угодно'
+                },
+                {
+                    icon_name: 'kinopoisk_2021_v2',
+                    name: 'Кинопоиск',
+                    description: '«Нулевой пациент»'
+                },
+                {
+                    icon_name: 'kinopoisk_2021_v2',
+                    name: 'Практикум',
+                    description: 'стать аналитиком'
+                },
+                {
+                    icon_name: 'edadeal_new',
+                    name: 'Едадил',
+                    description: 'скидки в супермаркетах'
+                },
+                {
+                    icon_name: 'toloka1',
+                    name: 'Толока',
+                    description: 'удалённый заработок'
+                },
+            ]
+            let html = '';
+            for (const service of services) {
+                html += `<div class="services__item">
+                    <div class="services-item__icon">
+                        <img src="//yastatic.net/s3/home/services/all/svg/${service.icon_name}.svg"/></div>
+                        <p><a href="#">${service.name}</a> - ${service.description}</p>
+                    </div>`
+            }
+            document.querySelector('.right__services').innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>
