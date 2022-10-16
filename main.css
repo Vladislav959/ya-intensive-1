@@ -3,7 +3,9 @@
   --searchbar-padding: 2px;
   --input-padding-vertical: 11px;
   --transition-duration: 0.2s;
-  --max-width:700px;
+  --min-width: 700px;
+  --services-gap: 15px;
+  --service-icon-wh: 17px;
 }
 * {
   box-sizing: border-box;
@@ -21,9 +23,9 @@ a {
   color: #0054b9;
   transition: color var(--transition-duration) ease-in-out;
 }
-a:visited{
-    /*color:#a58bdd;*/
-    /* отключено, так-как на всех ссылках стоит # */
+a:visited {
+  /*color:#a58bdd;*/
+  /* отключено, так-как на всех ссылках стоит # */
 }
 a:hover {
   color: #c00;
@@ -37,15 +39,13 @@ h6 {
   font-weight: normal;
 }
 .container {
-  
 }
 main {
-    position: absolute;
+  position: absolute;
   left: 50%;
-  top:50%;
-  transform: translate(-50%,-50%);
-  width: 100%;
-  max-width: var(--max-width);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: var(--min-width);
   justify-content: flex-start;
   display: flex;
 
@@ -64,7 +64,7 @@ main {
 }
 .main__right {
   display: flex;
-  flex-grow:1;
+  flex-grow: 1;
   flex-direction: column;
   gap: 20px;
 }
@@ -106,22 +106,24 @@ main {
 .right__services {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--services-gap);
   flex-wrap: wrap;
-  max-height: calc((17px + 15px) * 4);
+  max-height: calc((var(--service-icon-wh) + var(--services-gap)) * 4);
 }
 .services__item {
   display: flex;
   gap: 10px;
-  max-height: 17px;
+  max-height: fit-content;
+  flex: 1 1 0px;
+  gap: 10px;
 }
 .services__item p {
   margin: 0;
 }
 .services-item__icon {
-  --wh: 17px;
-  width: var(--wh);
-  height: var(--wh);
+  width: var(--service-icon-wh);
+  height: var(--service-icon-wh);
+  min-width: var(--service-icon-wh); /* чтобы иконка не сужалась */
 }
 .services-item__icon img {
   width: 100%;
@@ -134,8 +136,8 @@ footer {
   position: absolute;
   bottom: 30px;
   left: calc((100% - 700px) / 2 + 97px + 20px);
-  max-width:calc(var(--max-width) - 97px - 20px);
-  width:100%;
+  max-width: calc(var(--min-width) - 97px - 20px);
+  width: 100%;
 }
 .footer__links {
   display: flex;
