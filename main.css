@@ -21,7 +21,7 @@ body {
 a {
   text-decoration: none;
   color: #0054b9;
-  transition: color var(--transition-duration) ease-in-out;
+  transition: color var(--transition-duration) ease-in-out, scale var(--transition-duration) ease-in-out;
 }
 a:visited {
   /*color:#a58bdd;*/
@@ -38,17 +38,19 @@ h5,
 h6 {
   font-weight: normal;
 }
-.container {
+.main__container {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
+
 main {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  min-width: var(--min-width);
+  
+  width: var(--min-width);
   justify-content: flex-start;
   display: flex;
-
+height:fit-content;
   gap: 20px;
 }
 .main__logo {
@@ -56,7 +58,7 @@ main {
   justify-content: center;
   align-items: center;
   height: calc(
-    var(--searchbar-padding) * 2 + var(--input-padding-vertical) * 2 + 20px
+    var(--searchbar-padding) * 2 + var(--input-padding-vertical) * 2 + 25px
   ); /* line-height*/
 }
 .main__logo img {
@@ -68,7 +70,7 @@ main {
   flex-direction: column;
   gap: 20px;
 }
-.right__text > h2 {
+.right__text > h1 {
   margin-top: 3px;
 }
 .right__searchbar {
@@ -78,6 +80,17 @@ main {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  transition-duration:var(--transition-duration);
+  transition-timing-function:ease-in-out;
+  transition-property:background-color,transform,box-shadow;
+}
+
+.right__searchbar:focus-within{
+  transform:scale(103%);
+  box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
+.right__searchbar:focus-within .searchbar_button {
+  background-color:#fc0;
 }
 .searchbar__input {
   font-family: var(--font);
@@ -98,10 +111,13 @@ main {
   cursor: pointer;
   font-size: 1rem;
   background-color: transparent;
-  transition: background var(--transition-duration) ease-in-out;
+  transition: background var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
 }
 .searchbar__button:hover {
   background-color: #f1c205;
+}
+.searchbar__button:active, .searchbar__button:focus{
+  transform:scale(95%);
 }
 .right__services {
   display: flex;
@@ -133,10 +149,10 @@ main {
   color: #999;
 }
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 30px;
-  left: calc((100% - 700px) / 2 + 97px + 20px);
-  max-width: calc(var(--min-width) - 97px - 20px);
+  left:calc((100% - var(--min-width)) / 2);
+  
   width: 100%;
 }
 .footer__links {
