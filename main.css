@@ -130,7 +130,6 @@ height:fit-content;
   display: flex;
   gap: 10px;
   max-height: fit-content;
-  flex: 1 1 0px;
   gap: 10px;
 }
 .services__item p {
